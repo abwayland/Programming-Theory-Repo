@@ -20,10 +20,10 @@ public class OrbScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        MoveOrb(direction);  
+        MoveOrb(direction);  // ABSTRACTION
     }
 
-    private void MoveOrb(Vector3 direction)
+    private void MoveOrb(Vector3 direction) // ABSTRACTION
     {
         transform.Translate(direction * Time.deltaTime * speed);
     }
@@ -43,24 +43,33 @@ public class OrbScript : MonoBehaviour
             float distance = Vector3.Distance(transform.position, node.transform.position);
             if (distance <= 0.05)
             {
-                if (node.CurrentNodeState == NodeState.Open) { 
-                    transform.position = node.transform.position;
-                    direction = node.Direction;
-                    node.CurrentNodeState = NodeState.Closed;
-                    if (node.GetComponent<StopNode>())
-                    {
-                        node.ChangeNodeColor(Color.yellow);
-                        print("StopNode");
-                    } else {
-                        node.ChangeNodeColor();
-                    }
-                    
+                if (node.CurrentNodeState == NodeState.Open) {
+                    UpdateOrb(); // ABSTRACTION
+                    UpdateNode(); // ABSTRACTION
                 }
             }
         }
     }
 
+    void UpdateNode() // ABSTRACTION
+    {
+        node.CurrentNodeState = NodeState.Closed;
+        if (node.GetComponent<StopNode>())
+        {
+            node.ChangeNodeColor(Color.cyan); // ABSTRACTION // POLYMORPHISM
+            Destroy(gameObject);
+        }
+        else
+        {
+            node.ChangeNodeColor(); // ABSTRACTION // POLYMORPHISM
+        }
+    }
 
+    void UpdateOrb() // ABSTRACTION
+    {
+        transform.position = node.transform.position;
+        direction = node.Direction;
+    }
 
 
 }

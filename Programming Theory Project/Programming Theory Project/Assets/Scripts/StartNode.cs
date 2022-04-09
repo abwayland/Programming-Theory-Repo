@@ -2,12 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StartNode : BaseNode
+public class StartNode : BaseNode //Inheritance
 {
     [SerializeField] GameObject orb;
     private Vector3 direction = Vector3.right;
 
-    public override Vector3 Direction
+    public override Vector3 Direction //Inheritance // ENCAPSULATION
     {
         get
         {
@@ -33,6 +33,6 @@ public class StartNode : BaseNode
     {
         orb = Instantiate(orb);
         CurrentNodeState = NodeState.Closed;
-        ChangeNodeColor(Color.yellow);
+        ChangeNodeColor(Color.cyan);
     }
 }

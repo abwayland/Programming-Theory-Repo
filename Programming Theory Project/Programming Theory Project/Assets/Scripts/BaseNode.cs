@@ -6,13 +6,13 @@ public enum NodeState
     Open,
     Closed
 }
-public class BaseNode : MonoBehaviour
+public class BaseNode : MonoBehaviour // INHERITANCE
 {
     private Vector3 direction = Vector3.zero;
-    public virtual Vector3 Direction { get; }
+    public virtual Vector3 Direction { get; } // INHERITANCE // ENCAPSULATION
 
     private NodeState currentNodeState = NodeState.Open;
-    public NodeState CurrentNodeState
+    public NodeState CurrentNodeState // ENCAPSULATION
     {
         get
         {
@@ -24,12 +24,12 @@ public class BaseNode : MonoBehaviour
         }
     }
 
-    public void ChangeNodeColor()
+    public void ChangeNodeColor() // POLYMORPHISM
     {
         gameObject.GetComponent<MeshRenderer>().material.color = Color.gray;
     }
 
-    public void ChangeNodeColor(Color color)
+    public void ChangeNodeColor(Color color) // POLYMORPHISM
     {
         gameObject.GetComponent<MeshRenderer>().material.color = color;
     }
