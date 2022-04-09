@@ -24,6 +24,16 @@ public class BaseNode : MonoBehaviour
         }
     }
 
+    public void ChangeNodeColor()
+    {
+        gameObject.GetComponent<MeshRenderer>().material.color = Color.gray;
+    }
+
+    public void ChangeNodeColor(Color color)
+    {
+        gameObject.GetComponent<MeshRenderer>().material.color = color;
+    }
+
 }
 
 

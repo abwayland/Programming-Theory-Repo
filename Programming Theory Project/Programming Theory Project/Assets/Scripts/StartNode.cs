@@ -32,5 +32,7 @@ public class StartNode : BaseNode
     private void OnMouseDown()
     {
         orb = Instantiate(orb);
+        CurrentNodeState = NodeState.Closed;
+        ChangeNodeColor(Color.yellow);
     }
 }

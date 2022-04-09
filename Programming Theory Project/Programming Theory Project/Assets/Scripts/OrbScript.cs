@@ -30,7 +30,6 @@ public class OrbScript : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        print("trigger");
         if (other.gameObject.GetComponent<BaseNode>() != null)
         {
             node = other.gameObject.GetComponent<BaseNode>();
@@ -48,6 +47,14 @@ public class OrbScript : MonoBehaviour
                     transform.position = node.transform.position;
                     direction = node.Direction;
                     node.CurrentNodeState = NodeState.Closed;
+                    if (node.GetComponent<StopNode>())
+                    {
+                        node.ChangeNodeColor(Color.yellow);
+                        print("StopNode");
+                    } else {
+                        node.ChangeNodeColor();
+                    }
+                    
                 }
             }
         }
